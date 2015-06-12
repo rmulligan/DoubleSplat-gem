@@ -8,9 +8,9 @@ Gem::Specification.new do |spec|
   spec.version       = Doublesplat::VERSION
   spec.authors       = ["Ryan Mulligan"]
   spec.email         = ["mullymulligan@gmail.com"]
-  spec.summary       = %q{Write a short summary. Required.}
-  spec.description   = %q{Write a longer description. Optional.}
-  spec.homepage      = ""
+  spec.summary       = %q{Battle other ruby coders for real cash using your own editor... not some browser IDE.}
+  spec.description   = %q{}
+  spec.homepage      = "http://www.doublesplat.comB"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
@@ -19,6 +19,8 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_dependency "rainbow"
+  spec.add_dependency "commander"
+  spec.add_dependency "terminal-table"
   spec.add_development_dependency "bundler", "~> 1.7"
   spec.add_development_dependency "rake", "~> 10.0"
 end
