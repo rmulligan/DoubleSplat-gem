@@ -1,6 +1,20 @@
 #!/usr/bin/env ruby
 
 require 'doublesplat'
+require 'commander/import'
 
-chatter = Doublesplat::Chatter.new
-chatter.say_hello
+
+program :version, '0.0.2'
+program :description, 'Battle other ruby coders for real cash using your own editor.'
+program :help, 'Author', 'Ryan Mulligan <mullymulligan@gmail.com>'
+
+command :start do |c|
+  c.syntax = 'splat start'
+  c.summary = 'Let the battle begin!'
+  c.description = 'Sign up at www.doublesplat.com'
+
+  c.action do |args, options|
+    auth = Doublesplat::Auth.new
+    auth.login options
+  end
+end
