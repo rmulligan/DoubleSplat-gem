@@ -1,6 +1,0 @@
-
-class Navigator
-  def test
-    "Test1"
-  end
-end
