@@ -56,6 +56,8 @@ module Doublesplat
             response_hash['failed_string'].split(",").each do |error|
               puts Rainbow(error).red
             end
+
+            puts Rainbow("Check your code for syntax errors or missing closing indicators.").red if response_hash["passed_count"] < 1
           else
             puts "\n\n"
             puts Rainbow("You did it!!!").white
