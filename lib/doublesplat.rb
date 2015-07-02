@@ -51,7 +51,7 @@ module Doublesplat
           print Rainbow(" | ").yellow
           print Rainbow("#{response_hash['failed_count']} Failed").red
 
-          if response_hash['failed_count'] > 0
+          if response_hash['failed_count'] > 0 || response_hash['passed_count'] < 1
             puts "\n\n"
             response_hash['failed_string'].split(",").each do |error|
               puts Rainbow(error).red
