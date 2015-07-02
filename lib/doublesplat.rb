@@ -20,12 +20,7 @@ module Doublesplat
     end
 
     def start_watch phrase
-      puts Rainbow("Where would you like to save the challenge file?").blue
-      puts Rainbow("[default: #{`pwd`.strip}/]").blue
-      puts Rainbow("Press Enter to use default or enter new below").blue
-      print Rainbow("> ".chomp).blue
-      new_dir = STDIN.gets.strip
-      directory = new_dir.chars.empty? ? "#{`pwd`.strip}" : new_dir.strip
+      directory = "#{`pwd`.strip}"
 
       response = RestClient.get "#{ENDPOINT}/get/#{phrase}"
       code = Base64.decode64(JSON.parse(response)['base64'])
