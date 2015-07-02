@@ -8,7 +8,7 @@ require "listen"
 module Doublesplat
   class Challenge
     def start
-      phrase = ARGV[0] && !ARGV[0].chars.empty? ? ARGV[0].strip : "NONE"
+      phrase = ARGV[0] && !ARGV[0].chars.empty? ? ARGV[0].downcase.strip : "NONE"
       response = RestClient.get "#{ENDPOINT}/start/#{phrase}"
       response =  JSON.parse(response)
 
