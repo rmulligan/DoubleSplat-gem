@@ -19,10 +19,9 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_dependency "rainbow"
-  spec.add_dependency "commander"
   spec.add_dependency "terminal-table"
-  spec.add_dependency "bcrypt"
   spec.add_dependency "rest-client"
+  spec.add_dependency "listen"
 
   spec.add_development_dependency "bundler", "~> 1.7"
   spec.add_development_dependency "rake", "~> 10.0"
