@@ -36,31 +36,19 @@ module Doublesplat
       listener = Listen.to(directory, only: /#{phrase}\.rb$/) do |modified, added, removed|
         unless modified.empty?
           # Run Tests
-          new_text = String.new
-          File.open("#{directory}/#{phrase}.rb").each do |line|
-            unless line.strip.chars.empty?
-              new_text << "#{line.strip};"
-            end
-          end
-
-          new_base_64 = Base64.encode64(new_text)
+          new_base_64 = Base64.encode64(File.read("#{directory}/#{phrase}.rb"))
           print "\n--> Running Tests || "
           response = RestClient.post "#{ENDPOINT}/test", :phrase => phrase, :code => new_base_64
           response_hash = JSON.parse(response)
-          print Rainbow("#{response_hash['passed_count']} Passed").green
-          print Rainbow(" | ").yellow
-          print Rainbow("#{response_hash['failed_count']} Failed").red
 
-          if response_hash['failed_count'] > 0 || response_hash['passed_count'] < 1
+          if response_hash['passed'] == false
+            print Rainbow("Failed").red
             puts "\n\n"
-            response_hash['failed_string'].split(",").each do |error|
-              puts Rainbow(error).red
-            end
 
-            if response_hash["passed_count"] < 1 && response_hash["failed_count"] < 1
-              puts Rainbow("Check your code for syntax errors or missing closing indicators.").red
-            end
+            puts Rainbow(response_hash['msg']).red
           else
+            print Rainbow("Passed").green
+
             puts "\n\n"
             puts Rainbow("You did it!!!").white
             exit
