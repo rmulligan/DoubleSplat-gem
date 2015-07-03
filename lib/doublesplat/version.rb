@@ -1,4 +1,4 @@
 module Doublesplat
-  VERSION = "0.1.7"
-  ENDPOINT = "http://localhost:8000"
+  VERSION = "0.1.8"
+  ENDPOINT = "http://api.doublesplat.com:8080"
 end
