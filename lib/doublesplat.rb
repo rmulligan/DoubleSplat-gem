@@ -2,7 +2,6 @@ require "doublesplat/version"
 require "rainbow"
 require "rest-client"
 require "base64"
-require "awesome_print"
 require "listen"
 
 module Doublesplat
